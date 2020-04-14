@@ -54,6 +54,11 @@ abstract class DefaultVideo extends DefaultAudio implements VideoInterface
      */
     public function setKiloBitrate($kiloBitrate)
     {
+        if ($kiloBitrate === false) {
+            $this->kiloBitrate = false;
+            return $this;
+        }
+
         if ($kiloBitrate < 1) {
             throw new InvalidArgumentException('Wrong kiloBitrate value');
         }
